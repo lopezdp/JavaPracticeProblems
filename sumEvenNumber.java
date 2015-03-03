@@ -1,7 +1,7 @@
 /**
  * David P. Lopez
  * COP2800
- * Bank Account Application
+ * Sum even numbers between 1 - 100
  */
 
 /**
