@@ -1,7 +1,7 @@
 /**
  * David P. Lopez
  * COP2800
- * Bank Account Application
+ * Sum of Squares from 1 - 100
  */
 package sumSquares;
 /**
