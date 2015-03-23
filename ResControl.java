@@ -44,8 +44,12 @@ public class ResControl {
                         {
                             reservationSys.setGrSiz(numGuest);
                             
-                            if((reservationSys.getGrSiz() + reservationSys.getBarSiz()) >= 100)
+                            if((reservationSys.getGrSiz() + reservationSys.getBarSiz()) == 100)
                             {
+                                System.out.println("You are at Max Capacity!!! ");
+                                System.out.println("The amount of people seated "
+                                        + "in the Oyster Bar is: " 
+                                        + (reservationSys.getBarSiz()+reservationSys.getGrSiz()));
                                 System.out.print ("Enter Q to QUIT the Program & Close: ");
                                 while(!userInput.hasNext("[Qq]"))
                                 {
@@ -58,6 +62,21 @@ public class ResControl {
                                 System.exit(0);
 
                                 break;
+                            }
+                            
+                            while((reservationSys.getGrSiz() + reservationSys.getBarSiz()) > 100)
+                            {
+                                System.out.println("There is not enough seating "
+                                        + "available for your party. Please enter a party "
+                                        + "with guest amount less than or equal to: " 
+                                        + (100 - reservationSys.getBarSiz()));
+            
+                                reservationSys.setGrSiz(0);
+                                
+                                System.out.print ("Enter # of Guests in the next Group: ");
+                                
+                                numGuest = userInput.nextInt();
+                                reservationSys.setGrSiz(numGuest);
                             }
                             
                             reservationSys.setBarStd(numGuest);
@@ -119,9 +138,16 @@ public class ResControl {
             System.out.println("Available Seating is: " + (100 - reservationSys.getBarSiz()));
             
             reservationSys.setGrSiz(0);
-        }
-        
-        System.out.println("You are at Max Capacity!!! "
-                + "The Program has TERMINATED & the BAR IS NOW CLOSED");
+            
+            if(reservationSys.getBarSiz() == 100)
+            {
+                System.out.println("You are at Max Capacity!!! "
+                        + "The Program has TERMINATED & the BAR IS NOW CLOSED");
+                
+                t1 = false;
+                System.exit(0);
+
+            }
+        }    
     }   
 }
