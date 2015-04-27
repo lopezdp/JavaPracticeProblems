@@ -9,34 +9,32 @@ import java.util.*;
  * 305.467.5719
  * @author david.lopez016@mymdc.net
  */
-public class ScoreAnalyzer 
+public class ScoreAnalyzer
 {
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        Scanner input = new Scanner(System.in);
-        Student fred = new Student(100);
+   public static void main(String[] args)
+   {
+      Student fred = new Student(100);
+      System.out.println("Please enter values, Q to quit:");
+      Scanner in = new Scanner(System.in);
+      while (in.hasNextDouble())
+      {  
+         if (!fred.addScore(in.nextDouble()))
+         {
+            System.out.println("Too many scores.");
+            return;
+         }
+      }
 
-        System.out.println("Please enter values, Q to quit.");
-
-        while(input.hasNextDouble())
-        {
-            if(!fred.addScore(input.nextDouble()))
-            {
-                System.out.println("Too many Scores!");
-                return;
-            }
-        }
-
-        System.out.println("Final Score: " + fred.finalScore());
-    
-    
-        
-    }
-    
-    
+      int pos = fred.minimumPosition();
+      if (pos == -1)
+      {
+         System.out.println("At least one score is required.");
+      }
+      else
+      {
+         double total = fred.removeMinimum();
+         System.out.println("Final score: " + total);
+      }
+   }
 }
+
