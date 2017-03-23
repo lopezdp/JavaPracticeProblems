@@ -59,7 +59,25 @@ public class Xanadu {
         return str;
     }
     
-    
-    
-    
+    /**
+     * countChar()
+     * reads char in string
+     * and increment count
+     * @param str
+     * @return count
+     */
+    public int countChar(String str){
+        // Declare and initialize variable to count char
+        int count = 0;
+        
+        // Loop through each char in string based on string length
+        for(int i = 0; i < str.length(); i++){
+            // If char at i is equal to char looking for
+            if(str.charAt(i) == this.find){
+                // Then increment count
+                count++;
+            }
+        }
+        return count;
+    }
 }

@@ -6,6 +6,7 @@
  */
 package xanadutest;
 import java.io.*;
+import java.util.Scanner;
 
 /**
  *
@@ -19,10 +20,30 @@ public class XanaduTest {
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // TODO code application logic here
-        String path = "/Users/MyDocs/NetBeansProjects/XanaduTest/src/xanadutest/Xanadu.txt";
+        String inputPath = "/Users/MyDocs/NetBeansProjects/XanaduTest/src/xanadutest/Xanadu.txt";
+        Scanner filePath = new Scanner(System.in);
+        System.out.println("What is the path to your text file?: ");
+        String path = filePath.nextLine();
+        if(path != inputPath){
+            path = "/Users/MyDocs/NetBeansProjects/XanaduTest/src/xanadutest/Xanadu.txt";
+        }
         
-        Xanadu xany = new Xanadu(path, 'c');
-        System.out.println(" string: " + xany.readInputToString());
+                
+                
+        
+        Scanner in = new Scanner(System.in);
+        System.out.println("What char do you want to count?: ");
+        char[] c = in.nextLine().toCharArray();
+        
+        String read;
+        
+        Xanadu xany = new Xanadu(path, c[0]);
+        read = xany.readInputToString();
+        System.out.println("\nText to Search: \n" + read);
+        System.out.println("Char to find: " + c[0] + "\n");
+        
+        int num = xany.countChar(read);
+        System.out.println("Total count for char found: " + num);
         
     }
     
